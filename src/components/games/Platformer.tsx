@@ -262,7 +262,7 @@ export function Platformer() {
         
         {!isPlaying && !isGameOver && !isWin && (
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center z-10">
-            <h4 className="text-white font-bold text-3xl mb-2">Curriculum Jump</h4>
+            <h4 className="font-syne text-white font-bold text-3xl mb-2">Curriculum Jump</h4>
             <p className="text-slate-300 mb-6 max-w-md">Uma jornada de plataforma pela minha carreira. Desvie dos bugs (vermelhos) e não caia na lava!</p>
             <button onClick={startGame} className="flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95">
               <Play className="w-5 h-5 fill-current" /> Começar Jornada
@@ -272,7 +272,7 @@ export function Platformer() {
 
         {isGameOver && (
           <div className="absolute inset-0 bg-red-950/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center z-10">
-            <h4 className="text-white font-black text-4xl mb-4">Você foi pego por um Bug!</h4>
+            <h4 className="font-syne text-white font-black text-4xl mb-4">Você foi pego por um Bug!</h4>
             <button onClick={startGame} className="flex items-center gap-2 bg-white text-red-900 hover:bg-slate-100 px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95 shadow-xl">
               <RotateCcw className="w-5 h-5" /> Tentar Novamente
             </button>
@@ -282,7 +282,7 @@ export function Platformer() {
         {isWin && (
           <div className="absolute inset-0 bg-emerald-900/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center z-10">
             <Trophy className="w-16 h-16 text-yellow-400 mb-4 drop-shadow-lg" />
-            <h4 className="text-white font-black text-4xl mb-2">Objetivo Alcançado!</h4>
+            <h4 className="font-syne text-white font-black text-4xl mb-2">Objetivo Alcançado!</h4>
             <p className="text-emerald-200 mb-8 font-medium text-lg">Parabéns, você dominou a Lógica e a Engenharia.</p>
             <button onClick={startGame} className="flex items-center gap-2 bg-white text-emerald-900 hover:bg-slate-100 px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95 shadow-xl">
               <RotateCcw className="w-5 h-5" /> Jogar Novamente

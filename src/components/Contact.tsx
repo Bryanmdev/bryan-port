@@ -16,27 +16,24 @@ export function Contact({ lang }: { lang: 'pt' | 'en' }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">
+          <h2 className="font-syne text-[28px] leading-tight sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-4 md:mb-6">
             {lang === 'pt' ? 'Vamos construir algo' : "Let's build something"} <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-purple-500">
               {lang === 'pt' ? 'Incrível Juntos.' : 'Amazing Together.'}
             </span>
           </h2>
           
-          <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[14px] sm:text-base md:text-2xl text-slate-600 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
             {lang === 'pt' 
               ? 'Seja para o desenvolvimento de um aplicativo mobile, um e-commerce escalável ou sistemas de alta performance. Estou pronto para elevar o nível do seu próximo projeto.'
-              : 'Whether developing a mobile app, a scalable e-commerce, or high-performance systems. I am ready to elevate the level of your next project.'}
+              : 'Whether developing a mobile app, a scalable e-commerce platform, or high-performance systems. I am ready to elevate your next project.'}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-            <a 
-              href="mailto:bryanmiranda.dev@gmail.com" 
-              className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 active:scale-95 shadow-xl shadow-brand-500/20"
-            >
-              <Send className="w-5 h-5" />
+            <button className="w-[90%] sm:w-auto px-6 md:px-12 py-3.5 md:py-6 bg-brand-500 hover:bg-brand-600 text-white rounded-[24px] md:rounded-full font-bold text-[15px] md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-brand-500/50 flex items-center justify-center gap-2 md:gap-3 group mx-auto">
+              <Send className="w-4 h-4 md:w-6 md:h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               {lang === 'pt' ? 'Iniciar um Projeto' : 'Start a Project'}
-            </a>
+            </button>
           </div>
         </motion.div>
       </div>

@@ -175,7 +175,7 @@ export function CarRacing() {
         />
         {!isPlaying && !isGameOver && (
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center z-10">
-            <h4 className="text-white font-bold text-3xl mb-2">High Speed</h4>
+            <h4 className="font-syne text-white font-bold text-3xl mb-2">High Speed</h4>
             <p className="text-slate-300 mb-6 max-w-sm">Desvie dos carros. A velocidade aumenta com o tempo!</p>
             <button onClick={startGame} className="flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95">
               <Play className="w-5 h-5 fill-current" /> Ligar Motor
@@ -184,7 +184,7 @@ export function CarRacing() {
         )}
         {isGameOver && (
           <div className="absolute inset-0 bg-red-950/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center z-10">
-            <h4 className="text-white font-black text-4xl mb-4">Batida!</h4>
+            <h4 className="font-syne text-white font-black text-4xl mb-4">Batida!</h4>
             <p className="text-red-200 mb-6 font-medium text-xl">Pontuação: {score}</p>
             <button onClick={startGame} className="flex items-center gap-2 bg-white text-red-900 hover:bg-slate-100 px-8 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95 shadow-xl">
               <RotateCcw className="w-5 h-5" /> Tentar Novamente

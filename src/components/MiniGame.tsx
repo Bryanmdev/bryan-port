@@ -2,10 +2,27 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Gamepad2, Rocket, Footprints, Car, Play } from "lucide-react";
+import { Gamepad2, Rocket, Footprints, Car, Play, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Circle } from "lucide-react";
 import { SpaceShooter } from "./games/SpaceShooter";
 import { Platformer } from "./games/Platformer";
 import { CarRacing } from "./games/CarRacing";
+
+const dispatchKey = (key: string, type: 'keydown' | 'keyup') => {
+  window.dispatchEvent(new KeyboardEvent(type, { key }));
+};
+
+const MobileButton = ({ icon: Icon, actionKey }: { icon: any, actionKey: string }) => (
+  <button
+    className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-800 rounded-full flex items-center justify-center text-white active:bg-brand-500 active:scale-95 transition-all shadow-lg border border-slate-700 select-none"
+    onTouchStart={(e) => { e.preventDefault(); dispatchKey(actionKey, 'keydown'); }}
+    onTouchEnd={(e) => { e.preventDefault(); dispatchKey(actionKey, 'keyup'); }}
+    onMouseDown={(e) => { e.preventDefault(); dispatchKey(actionKey, 'keydown'); }}
+    onMouseUp={(e) => { e.preventDefault(); dispatchKey(actionKey, 'keyup'); }}
+    onMouseLeave={() => { dispatchKey(actionKey, 'keyup'); }}
+  >
+    <Icon className="w-6 h-6" />
+  </button>
+);
 
 export function MiniGame({ lang }: { lang: 'pt' | 'en' }) {
   const [activeGame, setActiveGame] = useState<"platformer" | "shooter" | "racing">("platformer");
@@ -68,12 +85,6 @@ export function MiniGame({ lang }: { lang: 'pt' | 'en' }) {
 
         {/* Console Screen */}
         <div className="w-full flex justify-center items-center bg-slate-900 p-2 sm:p-4 rounded-3xl shadow-2xl overflow-hidden relative min-h-[450px]">
-          {/* Mobile Warning Overlay */}
-          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-slate-900/90 backdrop-blur-sm p-6 text-center lg:hidden">
-            <Gamepad2 className="w-12 h-12 text-slate-400 mb-4" />
-            <h4 className="text-xl font-bold text-white mb-2">{lang === 'pt' ? 'Experiência Desktop' : 'Desktop Experience'}</h4>
-            <p className="text-slate-400 text-sm">{lang === 'pt' ? 'A engine gráfica deste minigame requer um teclado (WASD ou Setas) para jogar. Acesse pelo computador para testar a performance.' : 'The graphics engine for this minigame requires a keyboard (WASD or Arrows) to play. Access via desktop to test its performance.'}</p>
-          </div>
 
           {!isPlaying ? (
             <div className="flex flex-col items-center justify-center text-white z-10 w-full h-full min-h-[400px]">
@@ -106,8 +117,23 @@ export function MiniGame({ lang }: { lang: 'pt' | 'en' }) {
             </>
           )}
         </div>
-        
-        <div className="mt-6 text-slate-500 text-sm font-medium flex gap-4 text-center">
+        {isPlaying && (
+          <div className="w-full mt-6 flex lg:hidden justify-between items-center px-2 sm:px-6">
+            <div className="grid grid-cols-3 gap-2">
+               <div />
+               <MobileButton icon={ArrowUp} actionKey="ArrowUp" />
+               <div />
+               <MobileButton icon={ArrowLeft} actionKey="ArrowLeft" />
+               <MobileButton icon={ArrowDown} actionKey="ArrowDown" />
+               <MobileButton icon={ArrowRight} actionKey="ArrowRight" />
+            </div>
+            <div className="flex items-center justify-center mr-4">
+               <MobileButton icon={Circle} actionKey=" " />
+            </div>
+          </div>
+        )}
+
+        <div className="mt-8 text-slate-500 text-sm font-medium flex flex-wrap justify-center gap-4 text-center">
           <span>{lang === 'pt' ? 'Controles:' : 'Controls:'} <kbd className="px-2 py-1 bg-white border border-slate-200 rounded-md text-slate-700 font-mono shadow-sm">W A S D</kbd> {lang === 'pt' ? 'ou Setas' : 'or Arrows'}</span>
           <span>{lang === 'pt' ? 'Ações:' : 'Actions:'} <kbd className="px-2 py-1 bg-white border border-slate-200 rounded-md text-slate-700 font-mono shadow-sm">{lang === 'pt' ? 'Espaço' : 'Space'}</kbd></span>
         </div>

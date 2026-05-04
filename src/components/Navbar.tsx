@@ -43,19 +43,19 @@ export function Navbar({ onOpenContact, lang, setLang }: { onOpenContact: () => 
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "py-4" : "py-6"
+        scrolled ? "py-2 sm:py-4" : "py-4 sm:py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className={`flex items-center justify-between rounded-full px-6 py-3 transition-all duration-300 ${
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-8">
+        <div className={`flex items-center justify-between rounded-full px-3 sm:px-6 py-2 sm:py-3 transition-all duration-300 ${
           scrolled ? "bg-white/70 backdrop-blur-md shadow-lg shadow-brand-500/5 border border-white/50" : "bg-transparent"
         }`}>
           {/* Logo */}
-          <a href="#" className="font-syne text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-tr from-slate-900 to-slate-700 rounded-lg flex items-center justify-center text-white">
+          <a href="#" className="font-syne text-[17px] sm:text-2xl font-bold text-slate-900 flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-tr from-slate-900 to-slate-700 rounded-md sm:rounded-lg flex items-center justify-center text-white text-xs sm:text-base">
               B
             </div>
-            <span className="truncate">Bryan Miranda<span className="text-pink-500">.</span></span>
+            <span className="truncate">Bryan <span className="hidden sm:inline">Miranda</span><span className="text-pink-500">.</span></span>
           </a>
 
           {/* Navigation Links */}
@@ -66,17 +66,17 @@ export function Navbar({ onOpenContact, lang, setLang }: { onOpenContact: () => 
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
             
             {/* Language Dropdown */}
             <div className="relative">
               <button 
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
-                className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-brand-600 transition-colors border border-slate-200 px-3 py-1.5 rounded-full hover:bg-slate-50 focus:outline-none"
+                className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-600 transition-colors border border-slate-200 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full hover:bg-slate-50 focus:outline-none"
               >
-                <Globe className="w-3.5 h-3.5" />
+                <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 {lang.toUpperCase()}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isLangMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-200 ${isLangMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
@@ -86,17 +86,17 @@ export function Navbar({ onOpenContact, lang, setLang }: { onOpenContact: () => 
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 mt-2 w-32 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-[100]"
+                    className="absolute top-full right-0 mt-2 w-28 sm:w-32 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-[100]"
                   >
                     <button 
                       onClick={() => { setLang('pt'); setIsLangMenuOpen(false); }}
-                      className={`w-full text-left px-4 py-2 text-sm font-semibold transition-colors ${lang === 'pt' ? 'bg-brand-50 text-brand-600' : 'text-slate-600 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold transition-colors ${lang === 'pt' ? 'bg-brand-50 text-brand-600' : 'text-slate-600 hover:bg-slate-50'}`}
                     >
                       Português
                     </button>
                     <button 
                       onClick={() => { setLang('en'); setIsLangMenuOpen(false); }}
-                      className={`w-full text-left px-4 py-2 text-sm font-semibold transition-colors ${lang === 'en' ? 'bg-brand-50 text-brand-600' : 'text-slate-600 hover:bg-slate-50'}`}
+                      className={`w-full text-left px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold transition-colors ${lang === 'en' ? 'bg-brand-50 text-brand-600' : 'text-slate-600 hover:bg-slate-50'}`}
                     >
                       English
                     </button>
@@ -115,9 +115,9 @@ export function Navbar({ onOpenContact, lang, setLang }: { onOpenContact: () => 
             
             <button 
               onClick={onOpenContact}
-              className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-600 transition-colors shadow-md"
+              className="flex items-center gap-2 bg-slate-900 text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold hover:bg-brand-600 transition-colors shadow-md"
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">{lang === 'pt' ? 'Contato' : 'Contact'}</span>
             </button>
           </div>
